@@ -131,7 +131,7 @@ class Application(Frame):
 		cmd="%s/mysqldump \"%s\" -u \"%s\" --password=\"%s\" > \"%s%s.sql\"" % (self.mysql.get(), self.dbName, self.dbUsername, self.dbPassword, self.exportPath, self.dbName)
 		os.system(cmd)
 
-		f=open(self.dbName+".sql",'r+')
+		f=open(self.exportPath+self.dbName+".sql",'r+')
 		db=f.read()
 		result=re.findall(r'\'siteurl\'\s*,\s*\'[^\']*\'',db)
 		host=result[0].split("'")[-2]
